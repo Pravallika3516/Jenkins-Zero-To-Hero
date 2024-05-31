@@ -2,7 +2,14 @@ pipeline {
   agent {
     docker { image 'node:16-alpine' }
   }
+  environment {
+    PATH = "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
+  }
   stages {
+    stage('Checkout') {
+      steps {
+        git "https://github.com/Pravallika3516/name_new"
+      }
     stage('Test') {
       steps {
         sh 'node --version'
